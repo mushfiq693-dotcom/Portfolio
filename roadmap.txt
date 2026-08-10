@@ -1,0 +1,177 @@
+# MASTER PROMPT — Animated Personal Developer Portfolio (V1, Free Stack)
+
+You are a senior frontend engineer and UI/UX designer with a strong eye for motion design.
+
+Build my **personal portfolio website** — a single, polished, content-rich Next.js site with **premium scroll-driven animation** as the standout feature. This is V1: no backend, no database, no admin dashboard, no authentication. Content lives in structured code files so it's easy for me to edit later, but there is zero backend complexity in this version.
+
+Do NOT start coding immediately. First read this whole prompt, propose a folder structure and animation plan, then build it section by section.
+
+---
+
+## 1. WHO I AM (for copy/tone)
+
+I'm presenting myself primarily as a **Backend & Software Engineer** — currently a CSE undergraduate, strong in C++/DSA, learning backend development, databases, and system design, building real projects and freelancing on the side.
+
+Write copy that sounds like a credible early-career engineer who is serious about the craft — technical, specific, confident, no generic filler like "I am a passionate developer who loves coding." I will supply exact bio/project details separately; where you don't have real content, use clearly-marked placeholder text I can swap out, not invented achievements.
+
+---
+
+## 2. PRIMARY GOAL
+
+A modern, minimal, professional one-page (or lightly multi-page) portfolio that feels hand-crafted, not templated. The single biggest differentiator: **when the user scrolls, the page feels alive** — elements animate in, move, transform, and transition smoothly and intentionally as they enter/exit the viewport. Not static blocks that just appear.
+
+Must be:
+* Fast (good Lighthouse scores)
+* Fully responsive (mobile → large desktop)
+* Accessible (respects `prefers-reduced-motion`, keyboard nav, good contrast)
+* SEO-friendly (proper metadata, semantic HTML)
+* Deployable for **$0/month**
+
+---
+
+## 3. TECH STACK (100% free tier)
+
+* **Next.js (App Router) + TypeScript** — free, self-hosted concept
+* **Tailwind CSS** — free
+* **Framer Motion (motion/react)** — this is the core tool for the animation requirement; use it deliberately and well
+* **shadcn/ui** — free, for basic primitives (buttons, cards) only, not the visual identity
+* **Content**: plain TypeScript data files (`/content/*.ts`) — no CMS, no database. Structure them cleanly (typed objects/arrays) so migrating to a CMS or DB later is easy, but don't build that now.
+* **Hosting**: Vercel free tier (auto CI/CD from GitHub, free custom domain support, free SSL)
+* **Forms (contact section)**: a simple `mailto:` link or a free form service (e.g., Formspree/Web3Forms free tier) instead of a custom backend — no database for messages in V1.
+* **Images**: Next.js `<Image>` with local/static assets — no paid image CDN needed.
+
+Do not introduce Supabase, any database, authentication, or an admin dashboard in this version. Do not add dependencies beyond what's justified above.
+
+---
+
+## 4. SECTIONS TO BUILD
+
+### Hero
+* Name, title ("Backend & Software Engineer"), short technical tagline, brief intro
+* CTA buttons (View Projects, Contact, Resume/CV download link)
+* Social links (GitHub, LinkedIn, etc.)
+* Entrance animation on load (staggered fade/slide-in, not flashy)
+
+### About
+* Professional intro, current focus, background, philosophy, learning direction
+* Scroll-reveal as it enters viewport
+
+### Skills
+* Grouped by category: Languages, Backend, Databases, Tools
+* Content from a typed `skills.ts` array — easy to edit, no DB needed
+* Animated entrance (staggered grid reveal), subtle hover states
+
+### Projects
+* Project cards: title, short + detailed description, tech stack, GitHub link, live demo link, image, featured flag
+* Content from a typed `projects.ts` array
+* Strong hover/scroll interactions — this is a key showcase section for the animation feel
+* Optional: click to expand into a modal/detail view with its own transition
+
+### Experience / Education
+* Timeline-style layout, animated as user scrolls through it (e.g., line drawing in, items sliding into place)
+* Content from typed data files
+
+### Achievements
+* Competitive programming, certifications, milestones — simple animated list/grid
+
+### Contact
+* Name/email/message form → submits via a free form backend (Formspree/Web3Forms) or falls back to `mailto:`
+* Clear validation (React Hook Form + Zod is fine here, client-side only)
+* No message storage/admin inbox in V1
+
+### Footer
+* Social links, copyright, quick nav
+
+---
+
+## 5. ANIMATION REQUIREMENTS (this is the priority — be specific and ambitious here)
+
+This is the most important part of the brief. Don't just fade sections in — make scrolling feel choreographed.
+
+Use Framer Motion's scroll-linked features (`useScroll`, `useTransform`, `whileInView`) to implement:
+
+* **Scroll-triggered reveals**: sections/elements animate in (fade + slide, scale, or clip-path reveal) as they enter the viewport, using `whileInView` with sensible `viewport={{ once: true, margin: ... }}` settings
+* **Staggered children**: lists (skills, projects, timeline items) animate in one-by-one with a small delay between each, not all at once
+* **Scroll-linked parallax**: at least one element (e.g., hero background shape, section headings, or an accent graphic) moves at a different speed than the scroll for depth
+* **Progress-based effects**: consider a scroll progress indicator, or elements that scale/rotate/change opacity tied directly to scroll position via `useScroll`'s `scrollYProgress`
+* **Smooth micro-interactions**: hover states on project cards and buttons (subtle lift, border glow, or scale — nothing garish), animated underline on nav links, smooth focus states
+* **Page load sequence**: hero elements should stagger in on first load, not just appear
+* **Section transitions**: as the user moves from one section to the next, consider subtle background color/theme shifts or shape transitions that make it feel like one continuous, moving canvas rather than stacked static blocks
+
+Constraints:
+* Respect `prefers-reduced-motion: reduce` — disable/simplify non-essential motion for users who request it
+* Animations must not hurt performance — avoid animating expensive CSS properties, prefer `transform`/`opacity`
+* Keep it tasteful: smooth easing (avoid linear), moderate durations (~0.3–0.8s for most transitions), no bouncing/gimmicky effects unless it clearly fits the brand
+* Test that scrolling feels smooth on both desktop and mobile (touch scroll), not janky
+
+---
+
+## 6. DESIGN SYSTEM
+
+* Modern, premium, technical feel — not a generic AI-portfolio look
+* Strong typography (good font pairing, clear hierarchy), generous spacing
+* Dark theme as default, optional light theme toggle if time allows
+* Clean cards, subtle borders, restrained color palette (1 accent color, not a rainbow of gradients)
+* Avoid: neon overload, excessive glassmorphism, too many floating decorative objects, generic template aesthetics
+
+---
+
+## 7. RESPONSIVENESS & PERFORMANCE
+
+* Proper responsive layouts (not just shrinking desktop) for mobile, tablet, laptop, desktop
+* Use Server Components where there's no interactivity; only mark components Client Components when they need Framer Motion/state
+* Optimize images via `next/image`
+* Lazy-load below-the-fold heavy content where sensible
+
+---
+
+## 8. SEO & ACCESSIBILITY
+
+* Proper `metadata` (title, description, Open Graph, Twitter card)
+* Semantic HTML throughout
+* Keyboard-navigable, visible focus states, good color contrast
+* `alt` text on all images
+
+---
+
+## 9. CONTENT EDITING WORKFLOW (why we use data files instead of hardcoding in JSX)
+
+Even without a database, don't scatter content inline across components. Structure it like:
+
+```
+/content
+  profile.ts       // name, title, tagline, bio, social links, resume URL
+  skills.ts        // typed array grouped by category
+  projects.ts       // typed array of project objects
+  experience.ts     // typed array
+  education.ts      // typed array
+  achievements.ts    // typed array
+```
+
+Components import from `/content` and render dynamically from these arrays (`.map()`), so adding a new project later means adding one object to `projects.ts`, not editing JSX. This also makes a future migration to a real CMS/database straightforward without a rewrite.
+
+---
+
+## 10. WHAT NOT TO DO
+
+* Do not add Supabase, any database, authentication, or an admin dashboard — that's explicitly out of scope for this version
+* Do not hardcode content directly inside JSX components — use the `/content` data files
+* Do not add paid services or anything requiring a credit card
+* Do not over-animate to the point of hurting usability or performance
+* Do not leave TODO placeholders for core sections — implement all sections listed above, using clearly marked placeholder copy where I haven't given you real content
+
+---
+
+## 11. PROCESS
+
+1. Propose folder structure + list of `/content` file shapes (TypeScript interfaces) first
+2. Build layout + design system basics (theme, typography, spacing scale)
+3. Build sections one by one (Hero → About → Skills → Projects → Experience/Education → Achievements → Contact → Footer), wiring animation in as you go, not as an afterthought at the end
+4. Do a final pass specifically for scroll-animation polish and `prefers-reduced-motion` handling
+5. Verify responsive behavior and run a production build before calling it done
+
+---
+
+## 12. FINAL BAR
+
+This should feel like a real engineer's site that happens to scroll beautifully — not a flashy demo, and not a static template. Animation should serve the content, not distract from it.
