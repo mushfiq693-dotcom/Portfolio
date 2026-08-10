@@ -1,0 +1,259 @@
+## Add an Interactive Anime Developer Avatar to My Portfolio
+
+I want to upgrade the Hero Section of my personal developer portfolio by adding a **custom anime/semi-realistic developer avatar** representing me.
+
+Do NOT redesign the entire portfolio. First inspect the existing project structure, components, styling system, animations, and Hero Section. Then integrate this feature naturally into the existing design system.
+
+### 1. Avatar Concept
+
+use an anime-inspired, premium, semi-realistic developer avatar with these characteristics:
+
+* Male developer character
+* Inspired by my appearance if a reference photo is provided
+* Confident and friendly personality
+* Subtle natural smile
+* Wearing stylish modern developer/casual clothing
+* Wearing **black/dark sunglasses**
+* A **small minimal piercing on one ear**
+* Holding a **MacBook/laptop**
+* Developer/programmer aesthetic
+* Clean, modern, premium visual quality
+* Not childish or overly cartoonish
+* Anime + modern digital illustration aesthetic
+* Make the character look like a professional software engineer
+* Avoid excessive visual details that make the avatar distracting
+
+The avatar should feel like a **personal brand character**, not a generic stock anime character.
+
+### 2. Hero Section Layout
+
+Create a visually impressive hero section.
+
+Left side:
+
+**Hi, I'm Mushfique**
+
+**Backend & Software Engineer**
+
+Short supporting text:
+
+> I build scalable, reliable and beautiful digital experiences.
+
+Include the existing portfolio CTA buttons if they already exist, such as:
+
+* View Projects
+* Contact Me
+* GitHub
+* Resume
+
+Do not duplicate existing buttons unnecessarily.
+
+Right side:
+
+Place the anime developer avatar prominently.
+
+The avatar should be large enough to immediately attract attention but should not cover important content.
+
+### 3. Avatar Interaction
+
+Make the avatar feel alive instead of being a static image.
+
+Implement subtle interactions:
+
+#### Mouse Movement
+
+When the user moves the mouse:
+
+* Avatar should slightly tilt toward the cursor
+* Use smooth interpolation
+* Keep the movement subtle and professional
+* Avoid excessive rotation
+
+Example behavior:
+
+* Cursor left → avatar slightly looks/tilts left
+* Cursor right → avatar slightly looks/tilts right
+* Cursor up/down → subtle corresponding movement
+
+#### Floating Animation
+
+Add a very subtle floating/bobbing animation.
+
+The avatar should gently move up and down continuously.
+
+The animation must be:
+
+* Smooth
+* Slow
+* Elegant
+* Not distracting
+
+#### Hover Interaction
+
+When hovering over the avatar:
+
+* Slight scale-up
+* Very subtle glow
+* Slightly stronger facial expression
+* Smooth transition
+
+Do not make it behave like a game character.
+
+### 4. MacBook Interaction
+
+The MacBook should have a subtle developer-related animation.
+
+For example:
+
+* A small coding interface visible on the MacBook screen
+* Tiny code lines appearing/typing
+* Cursor blinking
+* Very subtle terminal/code animation
+
+Do not make the screen visually dominant.
+
+Keep the MacBook screen animation lightweight so it does not affect performance.
+
+### 5. Sunglasses & Facial Details
+
+Make the sunglasses clearly visible.
+
+The character should have:
+
+* Dark sunglasses
+* Friendly/confident smile
+* Small piercing on exactly one ear
+
+The piercing should be subtle and stylish, not exaggerated.
+
+### 6. Background Effects
+
+Add a very subtle developer-themed background around the avatar:
+
+Possible elements:
+
+* Minimal particles
+* Soft glowing dots
+* Thin grid
+* Floating code symbols
+* Very subtle geometric elements
+
+Important:
+
+DO NOT overcrowd the Hero Section.
+
+The background should support the avatar rather than compete with it.
+
+### 7. Scroll Animation
+
+Add subtle scroll-based animation.
+
+As the user scrolls:
+
+* Avatar can slightly move/parallax
+* Hero elements can fade/translate smoothly
+* Background elements can move at a different speed
+
+Keep everything performant.
+
+Do not introduce excessive scroll effects.
+
+### 8. Responsive Design
+
+The avatar and Hero Section MUST work perfectly on:
+
+* Large desktop
+* Laptop
+* Tablet
+* Mobile
+
+Desktop:
+
+Text left + avatar right.
+
+Mobile:
+
+Stack vertically with:
+
+1. Text
+2. CTA buttons
+3. Avatar
+
+Make sure the avatar does not become too large on mobile.
+
+No horizontal overflow.
+
+### 9. Performance Requirements
+
+Animations must be optimized.
+
+Prefer:
+
+* CSS transforms
+* Framer Motion / existing animation library
+* requestAnimationFrame where necessary
+
+Avoid:
+
+* Expensive continuous JavaScript calculations
+* Large unnecessary dependencies
+* Heavy 3D rendering unless the existing project already uses it
+
+Respect:
+
+`prefers-reduced-motion`
+
+If the user has reduced motion enabled, significantly reduce or disable non-essential animations.
+
+### 10. Visual Direction
+
+The final result should feel like:
+
+**Premium Developer Portfolio + Anime Personal Branding + Modern Interactive UI**
+
+It should NOT look like:
+
+* Generic AI portfolio
+* Anime gaming website
+* Overly colorful landing page
+* Childish cartoon design
+* Excessively animated website
+
+Keep the design:
+
+* Minimal
+* Premium
+* Modern
+* Professional
+* Developer-focused
+* Visually memorable
+
+### 11. Important Implementation Rule
+
+Before modifying anything:
+
+1. Inspect the existing Hero Section.
+2. Inspect the existing animation system.
+3. Inspect the existing theme/colors.
+4. Inspect the existing component structure.
+5. Reuse existing components and libraries wherever possible.
+6. Do not unnecessarily rewrite working code.
+7. Do not introduce a new library if an existing dependency can handle the requirement.
+
+After implementation:
+
+* Run the project.
+* Check for TypeScript errors.
+* Check for lint/build errors.
+* Verify desktop responsiveness.
+* Verify mobile responsiveness.
+* Verify all animations.
+* Fix any issues you introduce.
+
+### Final Goal
+
+I want visitors to immediately see:
+
+**"This is a software engineer's portfolio, but it has a unique personal identity."**
+
+The anime developer avatar should become one of the portfolio's signature visual elements while keeping the overall website professional and technically impressive.

@@ -1,9 +1,9 @@
 import { Profile } from "@/types/content";
 
 export const profileData: Profile = {
-  name: "Your Name Here",
+  name: "Mushfique",
   title: "Backend & Software Engineer",
-  tagline: "Building scalable systems, robust APIs, and high-performance algorithms.",
+  tagline: "I build scalable, reliable and beautiful digital experiences.",
   bio: [
     "Computer Science & Engineering undergraduate with a heavy focus on backend architecture, system design, and algorithmic optimization.",
     "Experienced in C++, data structures & algorithms, relational & NoSQL databases, and modern server side frameworks.",
@@ -12,7 +12,7 @@ export const profileData: Profile = {
   location: "Bangladesh",
   status: "Available for internships & freelance opportunities",
   email: "your.email@example.com",
-  github: "https://github.com/yourusername",
+  github: "https://github.com/mushfiq693-dotcom",
   linkedin: "https://linkedin.com/in/yourusername",
   twitter: "https://twitter.com/yourusername",
   resumeUrl: "#"
