@@ -33,11 +33,8 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactFormData) => {
     setSubmitting(true);
-    
-    // Simulate brief client side form processing or mailto trigger
     await new Promise((res) => setTimeout(res, 800));
 
-    // Fallback mailto trigger for direct email client execution
     const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
       data.subject
     )}&body=${encodeURIComponent(
@@ -52,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#0b0f17] relative">
+    <section id="contact" className="py-24 bg-[#090616] relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
@@ -63,12 +60,12 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono mb-3 shadow-sm shadow-cyan-500/20">
             <Mail className="w-3.5 h-3.5" />
             <span>06 // GET IN TOUCH</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Let&apos;s Build Something <span className="text-emerald-400">Great Together</span>
+            Let&apos;s Build Something <span className="text-gradient-cyber">Great Together</span>
           </h2>
           <p className="text-gray-400 text-sm sm:text-base max-w-xl mt-3">
             Have a project in mind, an opportunity to discuss, or just want to connect? Send me a message below.
@@ -92,20 +89,20 @@ export default function Contact() {
               </p>
 
               <div className="space-y-4 font-mono text-xs">
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-gray-900/80 border border-white/5">
-                  <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#070510] border border-white/5">
+                  <div className="p-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-400">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-gray-500 block text-[10px]">Email Address</span>
-                    <a href={`mailto:${profileData.email}`} className="text-gray-200 hover:text-emerald-400 transition-colors font-medium">
+                    <a href={`mailto:${profileData.email}`} className="text-gray-200 hover:text-fuchsia-400 transition-colors font-medium">
                       {profileData.email}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-gray-900/80 border border-white/5">
-                  <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#070510] border border-white/5">
+                  <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
@@ -114,13 +111,13 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-gray-900/80 border border-white/5">
-                  <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-[#070510] border border-white/5">
+                  <div className="p-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-400">
                     <Sparkles className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-gray-500 block text-[10px]">Status</span>
-                    <span className="text-emerald-400 font-medium">{profileData.status}</span>
+                    <span className="text-fuchsia-300 font-medium">{profileData.status}</span>
                   </div>
                 </div>
               </div>
@@ -134,7 +131,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
-                    className="p-3 rounded-xl bg-gray-900 border border-white/10 text-gray-300 hover:text-emerald-400 hover:border-emerald-500/30 transition-all"
+                    className="p-3 rounded-xl bg-[#070510] border border-fuchsia-500/20 text-gray-300 hover:text-fuchsia-400 hover:border-fuchsia-500/40 transition-all"
                   >
                     <GithubIcon className="w-5 h-5" />
                   </a>
@@ -143,7 +140,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
-                    className="p-3 rounded-xl bg-gray-900 border border-white/10 text-gray-300 hover:text-emerald-400 hover:border-emerald-500/30 transition-all"
+                    className="p-3 rounded-xl bg-[#070510] border border-fuchsia-500/20 text-gray-300 hover:text-fuchsia-400 hover:border-fuchsia-500/40 transition-all"
                   >
                     <LinkedinIcon className="w-5 h-5" />
                   </a>
@@ -167,17 +164,17 @@ export default function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 flex flex-col items-center text-center gap-3"
                 >
-                  <div className="p-4 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 mb-2">
+                  <div className="p-4 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 mb-2">
                     <CheckCircle2 className="w-10 h-10 animate-bounce" />
                   </div>
                   <h3 className="text-2xl font-bold text-white">Message Prepared!</h3>
                   <p className="text-gray-300 text-sm max-w-md">
                     Your email client should open shortly with the pre-filled message. You can also send directly to{" "}
-                    <span className="text-emerald-400 font-mono">{profileData.email}</span>.
+                    <span className="text-fuchsia-300 font-mono">{profileData.email}</span>.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-4 px-5 py-2.5 rounded-xl bg-emerald-500 text-gray-950 font-semibold text-xs transition-all hover:bg-emerald-400"
+                    className="mt-4 px-5 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white font-bold text-xs transition-all hover:scale-105"
                   >
                     Send Another Message
                   </button>
@@ -192,7 +189,7 @@ export default function Contact() {
                         {...register("name")}
                         type="text"
                         placeholder="John Doe"
-                        className="w-full px-4 py-2.5 rounded-xl bg-gray-900/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
+                        className="w-full px-4 py-2.5 rounded-xl bg-[#070510]/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all text-sm"
                       />
                       {errors.name && (
                         <span className="text-rose-400 text-xs mt-1 block">{errors.name.message}</span>
@@ -206,7 +203,7 @@ export default function Contact() {
                         {...register("email")}
                         type="email"
                         placeholder="john@example.com"
-                        className="w-full px-4 py-2.5 rounded-xl bg-gray-900/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
+                        className="w-full px-4 py-2.5 rounded-xl bg-[#070510]/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all text-sm"
                       />
                       {errors.email && (
                         <span className="text-rose-400 text-xs mt-1 block">{errors.email.message}</span>
@@ -221,7 +218,7 @@ export default function Contact() {
                       {...register("subject")}
                       type="text"
                       placeholder="Backend Engineering Inquiry"
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-900/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[#070510]/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all text-sm"
                     />
                     {errors.subject && (
                       <span className="text-rose-400 text-xs mt-1 block">{errors.subject.message}</span>
@@ -235,7 +232,7 @@ export default function Contact() {
                       {...register("message")}
                       rows={5}
                       placeholder="Write your message here..."
-                      className="w-full px-4 py-2.5 rounded-xl bg-gray-900/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-sm resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[#070510]/90 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all text-sm resize-none"
                     />
                     {errors.message && (
                       <span className="text-rose-400 text-xs mt-1 block">{errors.message.message}</span>
@@ -246,7 +243,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-gray-950 font-bold text-sm transition-all shadow-lg shadow-emerald-500/20 hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white font-bold text-sm transition-all shadow-lg shadow-fuchsia-500/30 hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {submitting ? (
                       <span>Processing...</span>

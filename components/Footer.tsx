@@ -10,23 +10,23 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#090d15] border-t border-white/10 py-12 relative">
+    <footer className="bg-[#070510] border-t border-fuchsia-500/20 py-12 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Brand & Tagline */}
         <div className="flex flex-col items-center md:items-start gap-2">
           <a
             href="#hero"
-            className="flex items-center gap-2 font-mono font-bold text-lg text-white hover:text-emerald-400 transition-colors"
+            className="flex items-center gap-2 font-mono font-bold text-lg text-white hover:text-fuchsia-400 transition-colors"
           >
-            <Terminal className="w-5 h-5 text-emerald-400" />
+            <Terminal className="w-5 h-5 text-fuchsia-400" />
             <span>
               {profileData.name.split(" ")[0]}
-              <span className="text-emerald-400">.dev</span>
+              <span className="text-cyan-400">.dev</span>
             </span>
           </a>
           <p className="text-gray-400 text-xs font-mono">
-            {profileData.title} &bull; Built for performance and motion.
+            {profileData.title} &bull; Cyberpunk Dev Workstation Theme.
           </p>
         </div>
 
@@ -37,7 +37,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="p-2 rounded-lg bg-gray-900 text-gray-400 hover:text-emerald-400 border border-white/5 transition-colors"
+            className="p-2 rounded-lg bg-[#0f0a21] text-gray-400 hover:text-fuchsia-400 border border-fuchsia-500/20 transition-colors"
           >
             <GithubIcon className="w-4 h-4" />
           </a>
@@ -46,7 +46,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2 rounded-lg bg-gray-900 text-gray-400 hover:text-emerald-400 border border-white/5 transition-colors"
+            className="p-2 rounded-lg bg-[#0f0a21] text-gray-400 hover:text-fuchsia-400 border border-fuchsia-500/20 transition-colors"
           >
             <LinkedinIcon className="w-4 h-4" />
           </a>
@@ -54,7 +54,7 @@ export default function Footer() {
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/30 transition-all ml-2"
+            className="p-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-300 hover:bg-fuchsia-500/20 border border-fuchsia-500/30 transition-all ml-2 shadow-sm shadow-fuchsia-500/20"
           >
             <ArrowUp className="w-4 h-4" />
           </button>

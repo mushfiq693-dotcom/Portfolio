@@ -1,7 +1,7 @@
 import { Profile } from "@/types/content";
 
 export const profileData: Profile = {
-  name: "Mushfique",
+  name: "Mushfiqur Rahman",
   title: "Backend & Software Engineer",
   tagline: "I build scalable, reliable and beautiful digital experiences.",
   bio: [
