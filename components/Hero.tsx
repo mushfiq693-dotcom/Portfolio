@@ -6,6 +6,7 @@ import { motion, Variants } from "framer-motion";
 import { ArrowDown, Mail, FileText, Terminal, Cpu, Sparkles, Zap, Brain } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/Icons";
 import { profileData } from "@/content/profile";
+import GitHubActivityCard from "@/components/GitHubActivityCard";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -91,7 +92,7 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Text & CTAs */}
+          {/* Left Column: Text, CTAs & GitHub Activity Card */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -109,7 +110,7 @@ export default function Hero() {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-3 leading-tight"
+              className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-3 leading-tight font-heading"
             >
               Hi, I&apos;m{" "}
               <span className="text-gradient-cyber">
@@ -129,7 +130,7 @@ export default function Hero() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-gray-300 max-w-xl font-normal leading-relaxed mb-8"
+              className="text-base sm:text-lg text-gray-300 max-w-xl font-normal leading-relaxed mb-6"
             >
               {profileData.tagline}
             </motion.p>
@@ -137,7 +138,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-6"
             >
               <a
                 href="#projects"
@@ -169,7 +170,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Social Icons */}
-            <motion.div variants={itemVariants} className="flex items-center gap-3">
+            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
               <a
                 href={profileData.github}
                 target="_blank"
@@ -195,6 +196,11 @@ export default function Hero() {
               >
                 <Mail className="w-5 h-5" />
               </a>
+            </motion.div>
+
+            {/* Integrated "Building in Public" GitHub Activity Card */}
+            <motion.div variants={itemVariants} className="w-full max-w-xl text-left">
+              <GitHubActivityCard />
             </motion.div>
           </motion.div>
 
@@ -271,7 +277,7 @@ export default function Hero() {
                     className="object-cover object-top transition-transform duration-500 hover:scale-[1.04] transform-gpu"
                   />
 
-                  {/* Cyber Terminal Code Typing Overlay: mushfique@macbook — zsh */}
+                  {/* Cyber Terminal Code Typing Overlay */}
                   <div className="absolute bottom-3 left-3 right-3 bg-[#070510]/95 border border-fuchsia-500/40 rounded-lg p-2.5 font-mono text-[10px] text-fuchsia-300 shadow-lg backdrop-blur-md">
                     <div className="flex items-center gap-1 mb-1 border-b border-white/10 pb-1">
                       <span className="w-2 h-2 rounded-full bg-rose-500" />
@@ -294,7 +300,7 @@ export default function Hero() {
                     <TypewriterGlitchText text="MUSHFIQUR RAHMAN" />
                   </span>
                   <span className="text-cyan-300 font-mono text-[11px] bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/30 flex items-center gap-1.5 shadow-sm shadow-cyan-500/20">
-                    <Sparkles className="w-3 h-3 text-cyan-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
                     <span>CSE Undergrad</span>
                   </span>
                 </div>

@@ -1,0 +1,69 @@
+# Add a "Building in Public" GitHub Activity Strip to Existing Portfolio
+
+I have a fully built portfolio. Do NOT rebuild, redesign, or change existing sections, layout, or content. Add ONE new small section/component: a live GitHub activity strip that proves I'm actively coding, not just showing old finished projects.
+
+---
+
+## Step 0 — Inspect first
+
+* Check my existing tech stack (Next.js version, App Router or Pages Router, Server/Client Components split).
+* Check if I already fetch anything from GitHub's API anywhere in the project. Reuse that setup if so.
+* Confirm where this strip should live: directly under the Hero section is the default — a thin horizontal strip, not a full new page section. Ask me only if placement is genuinely ambiguous.
+
+---
+
+## What to build
+
+A compact, elegant strip with three parts:
+
+1. **Contribution heatmap** — GitHub's public contribution calendar for my username, rendered as a small grid (like GitHub's own graph, last ~3-6 months, not the full year — keep it compact).
+2. **A live streak/stat line** — e.g. "🔥 12-day streak" or "127 commits this month" or "Active X of last 7 days" — whichever is honestly derivable from the data (see data source options below). Don't fabricate a streak metric if the data doesn't clearly support it.
+3. **A one-line "what I'm building now" note** — this is manually editable text (from a `/content` data file, NOT from the GitHub API), e.g. "Currently: shipping auth flow for SignalProof." This is the one part I will update myself by hand periodically.
+
+---
+
+## Data source (pick the simplest that fits my stack — report which you used)
+
+**Option A — No backend, free, simplest (recommended default):**
+Use a free public image API to render the heatmap directly as an `<img>`, no API key, no server code:
+`https://ghchart.rshah.io/{accent-hex-color}/{username}` — returns an SVG contribution graph image. Fastest to ship, zero maintenance, works in a Server Component.
+
+**Option B — Real API call, more control over styling/stats:**
+Call GitHub's public REST API (`https://api.github.com/users/{username}/events/public` for recent activity, or GraphQL API with a personal access token for full contribution-calendar data) from a Next.js Server Component or a cached API route. Needed if you want the exact commit-count stat line, not just the visual graph. Requires a GitHub token stored as a server-only env variable (`GITHUB_TOKEN`, never exposed to the client) if using GraphQL — the public REST events endpoint needs no token but has limited history.
+
+Default to Option A unless I ask for exact commit-count numbers, since Option A needs no token and can't rate-limit or break.
+
+---
+
+## Requirements
+
+* **Server Component / server-fetched, not client-side polling.** This data doesn't need to update in real time — fetch it at build time or with a reasonable revalidation window (e.g. `revalidate: 3600` — once an hour), not on every client render.
+* **Graceful failure is mandatory:** if the GitHub request fails or rate-limits, the strip must not break the page or show an error state to visitors — hide the live heatmap/stat gracefully (fall back to just the manual "what I'm building now" line, or hide the whole strip) and log the failure server-side only.
+* **Style it to match the existing design system** — same dark theme, accent color, spacing, typography as the rest of the site. This should look like it was always part of the portfolio, not a bolted-on widget.
+* **Keep it small and quiet** — this is a supporting detail, not a hero feature. No heavy animation needed; a simple fade/slide-in on scroll (matching whatever the rest of the site already uses) is enough.
+* Responsive: the heatmap grid should shrink/scroll horizontally gracefully on mobile rather than overflow or break layout.
+* No new heavy dependencies — a small fetch call (Option A) or the native `fetch` to GitHub's REST/GraphQL API (Option B) is enough; don't add a full GitHub SDK for this.
+
+---
+
+## Content file
+
+Add one small entry to my existing `/content` data files (or create `/content/activity.ts` if none fits):
+
+```ts
+export const currentlyBuilding = "Currently: shipping auth flow for SignalProof.";
+```
+
+I will edit this line by hand whenever I want to update it — no CMS needed for this.
+
+---
+
+## Process
+
+1. Inspect existing structure, confirm placement and chosen data option
+2. Implement the component (heatmap + stat line + manual "currently building" text)
+3. Add graceful fallback for API failure/rate limit
+4. Style to match existing design system, wire into existing scroll-animation pattern if one exists
+5. Test: normal load, simulated API failure, mobile view, production build
+
+Do not touch any other section, route, or existing functionality.
