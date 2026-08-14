@@ -6,9 +6,8 @@ export interface ContributionDay {
 
 export async function fetchGitHubContributions(username: string) {
   try {
-    // Add cache busting timestamp to ensure fresh response
-    const res = await fetch(`/api/github-contributions?t=${Date.now()}`, {
-      cache: "no-store",
+    const res = await fetch(`/api/github-contributions`, {
+      next: { revalidate: 3600 },
     });
 
     if (!res.ok) return null;
@@ -27,3 +26,4 @@ export async function fetchGitHubContributions(username: string) {
     return null;
   }
 }
+
