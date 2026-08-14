@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Sparkles, ExternalLink, Activity, Calendar } from "lucide-react";
+import { Sparkles, ExternalLink, Activity, Calendar, Flame } from "lucide-react";
 import { activityData } from "@/content/activity";
 import { profileData } from "@/content/profile";
 import { fetchGitHubContributions, ContributionDay } from "@/lib/github";
@@ -9,8 +9,8 @@ import { fetchGitHubContributions, ContributionDay } from "@/lib/github";
 // Vibrant Cyberpunk Emerald & Cyan active commit dots palette
 const levelColors = [
   "bg-[#120a2a] border border-white/5",                                // Level 0: Empty day
-  "bg-emerald-900/80 border border-emerald-500/40",                   // Level 1: Light activity
-  "bg-emerald-600 border border-emerald-400/60 shadow-sm shadow-emerald-500/30", // Level 2: Medium activity
+  "bg-emerald-950/80 border border-emerald-500/30",                   // Level 1: Light activity
+  "bg-emerald-700/80 border border-emerald-400/50 shadow-sm shadow-emerald-500/30", // Level 2: Medium activity
   "bg-emerald-400 border border-white shadow-md shadow-emerald-400/60",          // Level 3: High activity
   "bg-cyan-300 border border-white shadow-lg shadow-cyan-300/80 animate-pulse",   // Level 4: Peak active neon cyan flare
 ];
@@ -35,13 +35,18 @@ export default function GitHubActivityCard() {
     recentDays: ContributionDay[];
     totalCommits: number;
     activeDays: number;
+    streak: number;
   } | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
     fetchGitHubContributions(username).then((data) => {
-      if (isMounted && data) {
-        setStats(data);
+      if (isMounted) {
+        if (data) {
+          setStats(data);
+        }
+        setLoading(false);
       }
     });
     return () => {
@@ -49,17 +54,8 @@ export default function GitHubActivityCard() {
     };
   }, [username]);
 
-  // Fallback 16-week grid (~112 days)
-  const days: ContributionDay[] = stats?.recentDays || Array.from({ length: 112 }, (_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - (111 - i));
-    const dateStr = d.toISOString().split("T")[0];
-    return {
-      date: dateStr,
-      count: i % 4 === 0 ? (i % 8 === 0 ? 6 : 2) : 0,
-      level: (i % 4 === 0 ? (i % 8 === 0 ? 3 : 1) : 0) as 0 | 1 | 2 | 3 | 4,
-    };
-  });
+  // Use real fetched days array
+  const days: ContributionDay[] = stats?.recentDays || [];
 
   // Chunk days into weeks (columns of 7 days)
   const weeks: ContributionDay[][] = [];
@@ -93,7 +89,7 @@ export default function GitHubActivityCard() {
           </div>
           <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-fuchsia-300">
             <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
-            <span>BUILDING IN PUBLIC</span>
+            <span>LIVE GITHUB ACTIVITY</span>
           </div>
         </div>
 
@@ -116,46 +112,56 @@ export default function GitHubActivityCard() {
       {/* Contribution Grid with Month Headers & Stats */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-white/5">
         
-        {/* Heatmap Grid with Month Headers */}
-        <div className="overflow-x-auto max-w-full pb-1">
-          {/* Month Labels Row */}
-          <div className="flex gap-1.5 mb-1.5 text-[10px] font-mono text-gray-400 font-semibold h-4">
-            {monthLabels.map((month, idx) => (
-              <div key={idx} className="w-2.5 text-center shrink-0">
-                {month && <span className="text-cyan-300 -ml-1">{month}</span>}
-              </div>
-            ))}
-          </div>
-
-          {/* Grid Columns */}
-          <div className="flex gap-1.5">
-            {weeks.map((week, wIdx) => (
-              <div key={wIdx} className="flex flex-col gap-1.5">
-                {week.map((day, dIdx) => (
-                  <div
-                    key={dIdx}
-                    title={`${day.count} commits on ${formatDateFull(day.date)}`}
-                    className={`w-2.5 h-2.5 rounded-sm transition-all duration-200 hover:scale-150 cursor-pointer ${
-                      levelColors[day.level] || levelColors[0]
-                    }`}
-                  />
+        {/* Heatmap Grid */}
+        <div className="overflow-x-auto max-w-full pb-0 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]">
+          {loading ? (
+            <div className="h-28 flex items-center justify-center font-mono text-xs text-fuchsia-400 gap-2">
+              <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping" />
+              <span>Fetching Real GitHub Activity...</span>
+            </div>
+          ) : (
+            <>
+              {/* Month Labels Row */}
+              <div className="flex gap-1.5 mb-1.5 text-[10px] font-mono text-gray-400 font-semibold h-4">
+                {monthLabels.map((month, idx) => (
+                  <div key={idx} className="w-2.5 text-center shrink-0">
+                    {month && <span className="text-cyan-300 -ml-1">{month}</span>}
+                  </div>
                 ))}
               </div>
-            ))}
-          </div>
+
+              {/* Grid Columns */}
+              <div className="flex gap-1.5">
+                {weeks.map((week, wIdx) => (
+                  <div key={wIdx} className="flex flex-col gap-1.5">
+                    {week.map((day, dIdx) => (
+                      <div
+                        key={dIdx}
+                        title={`${day.count} commits on ${formatDateFull(day.date)}`}
+                        className={`w-2.5 h-2.5 rounded-sm transition-all duration-200 hover:scale-150 cursor-pointer ${
+                          levelColors[day.level] || levelColors[0]
+                        }`}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Live Stat & Month Summary Badge */}
+        {/* Live Stat Badge including Active Streak */}
         <div className="flex flex-col gap-1.5 shrink-0">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#070510] border border-emerald-500/30 text-xs font-mono shadow-sm shadow-emerald-500/20">
             <Activity className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-            {stats ? (
-              <span className="text-gray-300">
-                <strong className="text-emerald-400">{stats.totalCommits}+</strong> commits &bull; <span className="text-cyan-300">{stats.activeDays}</span> active days
+            <span className="text-gray-300 flex items-center gap-1.5">
+              <span className="text-amber-400 font-bold flex items-center gap-0.5">
+                <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400 inline" />
+                {stats ? stats.streak : 0}-day streak
               </span>
-            ) : (
-              <span className="text-emerald-400 font-medium">Active GitHub Contributor</span>
-            )}
+              <span>&bull;</span>
+              <strong className="text-emerald-400">{stats ? stats.totalCommits : 0}+</strong> commits
+            </span>
           </div>
 
           <div className="flex items-center justify-end gap-1.5 text-[10px] font-mono text-gray-400">
