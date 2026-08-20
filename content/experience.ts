@@ -3,30 +3,30 @@ import { ExperienceItem } from "@/types/content";
 export const experienceData: ExperienceItem[] = [
   {
     id: "exp-1",
-    role: "Freelance Software Engineer",
-    company: "Self-Employed",
+    role: "Full-Stack & Algorithm Developer",
+    company: "AlgoHub Project & Open Source",
     period: "2024 — Present",
-    type: "Freelance",
-    description: "Designing and building custom backend APIs, database schemas, and web platforms for global clients.",
-    technologies: ["Node.js", "Express", "TypeScript", "PostgreSQL", "MongoDB"],
+    type: "Project Engineering",
+    description: "Designing and developing interactive educational tooling, algorithm visualization engines, and secure web platforms.",
+    technologies: ["Next.js 15", "TypeScript", "C++", "Supabase", "PostgreSQL", "Tailwind CSS"],
     highlights: [
-      "Built 5+ production-grade REST APIs with clean documentation and high reliability",
-      "Optimized slow database queries for client platforms, improving response times by over 50%",
-      "Engineered containerized Docker environments for seamless client deployments"
+      "Architected AlgoHub: a real-time sorting algorithm visualizer with live C++ debugging",
+      "Conducted adversarial database security audits (RLS/RBAC) across 16 test scenarios",
+      "Engineered adaptive student mastery analytics using custom scoring algorithms"
     ]
   },
   {
     id: "exp-2",
-    role: "Backend & Systems Learning Journey",
-    company: "Open Source & Academic Projects",
-    period: "2023 — Present",
-    type: "Open Source",
-    description: "Deep-diving into system design concepts, concurrent programming, and competitive problem solving.",
-    technologies: ["C++", "Data Structures", "System Design", "Git", "Linux"],
+    role: "Undergraduate Computer Science & DSA",
+    company: "Gopalganj Science and Technology University",
+    period: "2024 — Present",
+    type: "Academic & Systems Lab",
+    description: "Dedicated exploration of core Computer Science, C++ programming, data structures, and algorithmic problem solving.",
+    technologies: ["C++", "C++20", "Data Structures", "Algorithms", "Git & Linux"],
     highlights: [
-      "Solved hundreds of competitive programming problems across platforms",
-      "Contributed bug fixes and optimizations to open-source developer toolkits",
-      "Designed mock microservices architecture to practice message queues and caching"
+      "Implemented comprehensive C++ library of graph algorithms, recursion trees, and sorting techniques",
+      "Studying object-oriented principles, database management, and operating systems architecture",
+      "Practicing competitive programming and algorithm optimization on developer platforms"
     ]
   }
 ];

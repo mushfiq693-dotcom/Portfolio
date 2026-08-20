@@ -45,7 +45,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${firaCode.variable} dark scroll-smooth`}>
-      <body className="bg-[#070510] text-gray-100 min-h-screen antialiased selection:bg-fuchsia-500/30 selection:text-fuchsia-200 font-sans">
+      <body className="bg-[#000000] text-gray-100 min-h-screen antialiased selection:bg-white/20 selection:text-white font-sans">
         {children}
       </body>
     </html>

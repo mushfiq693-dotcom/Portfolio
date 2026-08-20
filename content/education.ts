@@ -4,18 +4,18 @@ export const educationData: EducationItem[] = [
   {
     id: "edu-1",
     degree: "B.Sc. in Computer Science & Engineering",
-    institution: "Your University Name",
-    period: "2022 — Present (Expected 2026)",
-    location: "Bangladesh",
+    institution: "Gopalganj Science and Technology University",
+    period: "2024 — 2028",
+    location: "Gopalganj, Bangladesh",
     score: "Undergraduate",
-    description: "Focusing on core Computer Science topics including Algorithms, Operating Systems, Database Management Systems, and Software Engineering.",
+    description: "Pursuing Bachelor of Science in Computer Science & Engineering with a strong focus on algorithmic foundations, systems programming, and software engineering principles.",
     coursework: [
       "Data Structures & Algorithms",
       "Object-Oriented Programming (C++)",
       "Database Management Systems (DBMS)",
-      "Operating Systems & Systems Programming",
-      "Computer Networks & Architecture",
-      "Software Engineering & Design Patterns"
+      "Operating Systems",
+      "Computer Networks",
+      "Software Engineering"
     ]
   }
 ];

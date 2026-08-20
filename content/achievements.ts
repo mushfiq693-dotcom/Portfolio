@@ -3,30 +3,31 @@ import { AchievementItem } from "@/types/content";
 export const achievementsData: AchievementItem[] = [
   {
     id: "ach-1",
-    title: "Competitive Programming Milestones",
-    category: "Competitive Programming",
-    platformOrIssuer: "Codeforces / LeetCode / CodeChef",
-    date: "2023 — Present",
-    stat: "500+ Problems Solved",
-    description: "Active problem solver focusing on graph algorithms, dynamic programming, and data structures.",
-    link: "https://codeforces.com"
+    title: "Adversarial Database Security Audit",
+    category: "Milestone",
+    platformOrIssuer: "AlgoHub Security Verification",
+    date: "2024 — 2025",
+    stat: "16/16 Passed",
+    description: "Successfully validated database-level Row-Level Security (RLS) & RBAC rules across 16 adversarial penetration test scenarios.",
+    link: "https://github.com/mushfiq693-dotcom/Sorting-Algorithms"
   },
   {
     id: "ach-2",
-    title: "Backend Engineering Certification / Milestone",
-    category: "Certification",
-    platformOrIssuer: "Online Learning / University",
-    date: "2024",
-    stat: "Verified",
-    description: "Completed comprehensive coursework on server-side architecture, SQL query tuning, and REST API design."
+    title: "Data Structures & Algorithms Mastery",
+    category: "Competitive Programming",
+    platformOrIssuer: "Online Judge & Problem Solving",
+    date: "2024 — Present",
+    stat: "Active Solver",
+    description: "Practicing algorithmic problem solving in C++ with a focus on graph traversals, dynamic programming, and data structure design.",
+    link: "https://github.com/mushfiq693-dotcom"
   },
   {
     id: "ach-3",
-    title: "University Intra Hackathon Finalist",
-    category: "Hackathon",
-    platformOrIssuer: "CSE Department",
-    date: "2024",
-    stat: "Finalist",
-    description: "Designed and prototyped a real-time web backend in 24 hours under competition conditions."
+    title: "Undergraduate CSE Track",
+    category: "Certification",
+    platformOrIssuer: "Gopalganj Science and Technology University",
+    date: "2024 — 2028",
+    stat: "Enrolled",
+    description: "Completing core curriculum in Operating Systems, Database Management Systems, Object-Oriented Programming, and Computer Networks."
   }
 ];

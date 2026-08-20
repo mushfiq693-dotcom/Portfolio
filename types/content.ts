@@ -8,7 +8,8 @@ export interface Profile {
   email: string;
   github: string;
   linkedin: string;
-  twitter?: string;
+  facebook?: string;
+  instagram?: string;
   resumeUrl: string;
 }
 
@@ -48,7 +49,7 @@ export interface ExperienceItem {
   description: string;
   technologies: string[];
   highlights: string[];
-  type: "Work" | "Freelance" | "Open Source";
+  type: "Work" | "Freelance" | "Open Source" | "Project" | "Academic" | string;
 }
 
 export interface EducationItem {
