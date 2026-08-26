@@ -9,7 +9,7 @@ export const projectsData: Project[] = [
     detailedDescription: "AlgoHub bridges the gap between abstract algorithm concepts and concrete code execution. Engineered with a custom non-scripted algorithm execution engine powering synchronized visualizations and a live C++ code debugger with variable inspection. Features database-level security (RLS, RBAC in Supabase PostgreSQL) validated through a custom 16-scenario adversarial audit, plus an adaptive scoring engine for personalized topic recommendations.",
     techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Framer Motion", "Recharts"],
     githubUrl: "https://github.com/mushfiq693-dotcom/Sorting-Algorithms",
-    liveUrl: "https://github.com/mushfiq693-dotcom/Sorting-Algorithms",
+    liveUrl: "https://algo-hub-eight.vercel.app",
     featured: true,
     highlights: [
       "Engineered a real (non-scripted) algorithm execution engine powering synchronized visualizations and a live code debugger with variable inspection",
