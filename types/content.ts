@@ -63,6 +63,12 @@ export interface EducationItem {
   coursework: string[];
 }
 
+export interface AchievementGalleryImage {
+  src: string;
+  caption: string;
+  tag: string;
+}
+
 export interface AchievementItem {
   id: string;
   title: string;
@@ -72,4 +78,11 @@ export interface AchievementItem {
   description: string;
   link?: string;
   stat?: string;
+  team?: string;
+  prize?: string;
+  scale?: string;
+  track?: string;
+  metrics?: { label: string; value: string }[];
+  highlights?: string[];
+  gallery?: AchievementGalleryImage[];
 }
