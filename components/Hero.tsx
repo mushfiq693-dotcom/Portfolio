@@ -3,10 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { ArrowDown, Mail, FileText, Terminal, Cpu, Sparkles, Zap, Brain } from "lucide-react";
+import { ArrowDown, Mail, FileText, Terminal, Cpu } from "lucide-react";
 import { GithubIcon, LinkedinIcon, FacebookIcon, InstagramIcon } from "@/components/Icons";
 import { profileData } from "@/content/profile";
-import GitHubActivityCard from "@/components/GitHubActivityCard";
+import ResumeModal from "@/components/ResumeModal";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -60,6 +60,7 @@ export default function Hero() {
   const avatarRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   // 60FPS Spotlight Interaction
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -157,15 +158,13 @@ export default function Hero() {
               </a>
 
               {profileData.resumeUrl && (
-                <a
-                  href={profileData.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setIsResumeModalOpen(true)}
                   className="px-5 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-zinc-300 font-medium text-sm transition-all hover:text-white flex items-center gap-2"
                 >
                   <FileText className="w-4 h-4 text-zinc-400" />
                   <span>Resume</span>
-                </a>
+                </button>
               )}
             </motion.div>
 
@@ -220,10 +219,6 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Integrated "Building in Public" GitHub Activity Card */}
-            <motion.div variants={itemVariants} className="w-full max-w-xl text-left">
-              <GitHubActivityCard />
-            </motion.div>
           </motion.div>
 
           {/* Right Column: Workstation Avatar Card */}
@@ -233,27 +228,6 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 flex justify-center items-center relative"
           >
-            {/* Floating Orbit Tech Badges */}
-            {/* Top Left: ⚡ Backend & APIs */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-              className="absolute -top-4 left-2 z-20 px-3.5 py-1.5 rounded-xl bg-[#09090b]/95 border border-white/15 text-zinc-200 text-xs font-mono font-semibold flex items-center gap-1.5 shadow-2xl backdrop-blur-xl"
-            >
-              <Zap className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
-              <span>Backend &amp; APIs</span>
-            </motion.div>
-
-            {/* Bottom Right: 🧠 Think • Build • Scale */}
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-3 right-0 z-20 px-3.5 py-1.5 rounded-xl bg-[#09090b]/95 border border-white/15 text-zinc-200 text-xs font-mono font-semibold flex items-center gap-1.5 shadow-2xl backdrop-blur-xl"
-            >
-              <Brain className="w-3.5 h-3.5 text-zinc-300" />
-              <span>Think &bull; Build &bull; Scale</span>
-            </motion.div>
-
             <div
               ref={avatarRef}
               onMouseMove={handleMouseMove}
@@ -280,12 +254,6 @@ export default function Hero() {
                     background: `radial-gradient(400px circle at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.08), transparent 75%)`,
                   }}
                 />
-
-                {/* Top Corner Floating Badge */}
-                <div className="absolute top-6 right-6 z-20 px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-zinc-200 text-[11px] font-mono flex items-center gap-1.5 shadow-lg">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Backend Engineer</span>
-                </div>
 
                 {/* Avatar Image Frame */}
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-b from-[#18181b] to-[#000000] border border-white/10 flex items-center justify-center">
@@ -322,7 +290,6 @@ export default function Hero() {
                     <TypewriterGlitchText text="MUSHFIQUR RAHMAN" />
                   </span>
                   <span className="text-zinc-300 font-mono text-[11px] bg-white/[0.06] px-2.5 py-0.5 rounded-full border border-white/15 flex items-center gap-1.5 shadow-sm">
-                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                     <span>CSE Undergrad</span>
                   </span>
                 </div>
@@ -349,6 +316,12 @@ export default function Hero() {
         </motion.div>
 
       </div>
+
+      <ResumeModal 
+        isOpen={isResumeModalOpen} 
+        onClose={() => setIsResumeModalOpen(false)} 
+        resumeUrl={profileData.resumeUrl} 
+      />
     </section>
   );
 }

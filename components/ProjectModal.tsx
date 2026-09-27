@@ -45,13 +45,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-2xl bg-[#09090b] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 my-auto overflow-hidden"
+            className="relative w-full max-w-2xl bg-[#09090b] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 my-auto flex flex-col max-h-[90vh] overflow-hidden"
           >
             {/* Top Accent Line */}
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-zinc-500 via-white to-emerald-400 opacity-60" />
 
             {/* Header / Close button */}
-            <div className="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
+            <div className="flex items-start justify-between gap-4 pb-4 border-b border-white/10 shrink-0">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   {project.featured && (
@@ -74,7 +74,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Content Body */}
-            <div className="py-6 space-y-6">
+            <div className="py-6 space-y-6 overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent="true">
               {/* Detailed Description */}
               <div>
                 <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-300 mb-2 flex items-center gap-1.5">
@@ -136,7 +136,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Footer Action Links */}
-            <div className="pt-4 border-t border-white/10 flex items-center justify-end gap-3">
+            <div className="pt-4 border-t border-white/10 flex items-center justify-end gap-3 shrink-0">
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}

@@ -16,5 +16,5 @@ export const profileData: Profile = {
   linkedin: "https://www.linkedin.com/in/mushfiqur-rahman-9760a8410/",
   facebook: "https://www.facebook.com/km.rahman.376",
   instagram: "https://www.instagram.com/mushfiq_o9/",
-  resumeUrl: "#"
+  resumeUrl: "/resume.docx"
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Plus_Jakarta_Sans, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { profileData } from "@/content/profile";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -44,9 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${firaCode.variable} dark scroll-smooth`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${firaCode.variable} dark`}>
       <body className="bg-[#000000] text-gray-100 min-h-screen antialiased selection:bg-white/20 selection:text-white font-sans">
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );
