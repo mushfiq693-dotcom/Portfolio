@@ -10,6 +10,8 @@ export const projectsData: Project[] = [
     techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Framer Motion", "Recharts"],
     githubUrl: "https://github.com/mushfiq693-dotcom/Sorting-Algorithms",
     liveUrl: "https://algo-hub2.vercel.app",
+    image: "/algohub-1.png",
+    gallery: ["/algohub-1.png", "/algohub-2.png", "/algohub-3.png"],
     featured: true,
     highlights: [
       "Engineered a real (non-scripted) algorithm execution engine powering synchronized visualizations and a live code debugger with variable inspection",
@@ -30,6 +32,8 @@ export const projectsData: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Zod", "OpenRouter API"],
     githubUrl: "https://github.com/mushfiq693-dotcom/PlanForge",
     liveUrl: "https://papaprompt.vercel.app",
+    image: "https://images.unsplash.com/photo-1618477247222-ac60c6470ce2?auto=format&fit=crop&q=80&w=800",
+    video: "/planforge-preview.mov",
     featured: true,
     highlights: [
       "Engineered a Deterministic Quality Linter that evaluates generated blueprints client-side against 6 strict quality checks",
@@ -49,6 +53,7 @@ export const projectsData: Project[] = [
     detailedDescription: "Built entirely in Swift + SwiftUI with MenuBarExtra styling, this native macOS agent requires zero third-party web frameworks or local servers. It features an autonomous daily scheduler with wake observation, Keychain security for API keys, prompt-injection defense with code-level URL whitelisting, and a resilient AI engine with a 3-layer tolerant JSON parser and fallback model traversal. It integrates with native macOS notifications and SMAppService for Launch at Login functionality.",
     techStack: ["Swift", "SwiftUI", "macOS API", "OpenRouter API", "Brave Search API"],
     githubUrl: "https://github.com/mushfiq693-dotcom/Research_Agent",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800",
     featured: true,
     highlights: [
       "Built a 100% native macOS Menu Bar application with zero third-party web frameworks or local servers",

@@ -1,15 +1,80 @@
 "use client";
 
-import { useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Star, CheckCircle, Activity, Sparkles } from "lucide-react";
+import { X, ExternalLink, Star, CheckCircle, Activity, Sparkles, Play, Pause, Maximize } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 import { Project } from "@/types/content";
+import Image from "next/image";
 
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
 }
+
+const CustomVideoPlayer = ({ src }: { src: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const toggleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      } else if ((videoRef.current as any).webkitRequestFullscreen) {
+        (videoRef.current as any).webkitRequestFullscreen();
+      }
+    }
+  };
+
+  return (
+    <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black mb-4 group">
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        onClick={togglePlay}
+        className="w-full h-full object-cover cursor-pointer"
+      />
+      
+      {/* Play/Pause Overlay */}
+      <div 
+        className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+      >
+        <button 
+          onClick={togglePlay}
+          className="w-16 h-16 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all border border-white/20"
+        >
+          {isPlaying ? <Pause className="w-8 h-8 fill-current" /> : <Play className="w-8 h-8 fill-current ml-1" />}
+        </button>
+      </div>
+
+      {/* Fullscreen Button */}
+      <button 
+        onClick={toggleFullscreen}
+        className="absolute top-4 right-4 p-2 rounded-lg bg-black/50 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-black/70 transition-all border border-white/20"
+      >
+        <Maximize className="w-5 h-5" />
+      </button>
+    </div>
+  );
+};
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   useEffect(() => {
@@ -75,6 +140,26 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* Content Body */}
             <div className="py-6 space-y-6 overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent="true">
+              {/* Video Player */}
+              {project.video && <CustomVideoPlayer src={project.video} />}
+
+              {/* Image Gallery */}
+              {project.gallery && project.gallery.length > 0 && (
+                <div className="flex flex-col gap-4 mb-2">
+                  {project.gallery.map((imgUrl, idx) => (
+                    <div key={idx} className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/50">
+                      <Image
+                        src={imgUrl}
+                        alt={`${project.title} screenshot ${idx + 1}`}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-700"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
               {/* Detailed Description */}
               <div>
                 <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-300 mb-2 flex items-center gap-1.5">

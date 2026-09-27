@@ -26,7 +26,7 @@ export default function Footer() {
             </span>
           </a>
           <p className="text-zinc-500 text-xs font-mono">
-            {profileData.title} &bull; Pure Matte Obsidian &amp; Titanium Minimal Portfolio.
+            {profileData.title} &bull; Building secure, scalable, and intelligent software systems.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8 pt-6 border-t border-white/5 text-center text-zinc-600 text-xs font-mono">
-        &copy; {new Date().getFullYear()} {profileData.name}. All rights reserved. Self-hosted Next.js App.
+        &copy; {new Date().getFullYear()} {profileData.name}. All rights reserved. Built with Next.js 15 & Tailwind CSS.
       </div>
     </footer>
   );

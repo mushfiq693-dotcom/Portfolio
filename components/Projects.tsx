@@ -104,9 +104,23 @@ export default function Projects() {
               className="glass-card rounded-3xl p-7 relative group cursor-pointer flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 border border-white/10 hover:border-white/25 shadow-2xl overflow-hidden"
             >
               {/* Glowing Top Line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-zinc-500 via-white to-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-zinc-500 via-white to-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity z-20" />
 
-              <div>
+              {/* Hover Reveal Background Image */}
+              {project.image && (
+                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transform scale-105 group-hover:scale-100 transition-transform duration-700 ease-out"
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  />
+                  {/* Heavy overlay so text remains readable */}
+                  <div className="absolute inset-0 bg-[#000000]/80 backdrop-blur-sm" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/90 to-transparent" />
+                </div>
+              )}
+
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
                 {/* Header Badge & Action Icons */}
                 <div className="flex items-center justify-between mb-4">
                   {project.featured ? (
@@ -189,6 +203,7 @@ export default function Projects() {
                 <div className="mt-4 flex items-center justify-between text-xs font-mono text-zinc-400 font-semibold group-hover:text-white transition-colors">
                   <span>Explore Engineering Details &rarr;</span>
                 </div>
+              </div>
               </div>
             </motion.div>
           ))}

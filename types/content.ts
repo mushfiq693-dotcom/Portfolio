@@ -35,6 +35,8 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   image?: string;
+  video?: string;
+  gallery?: string[];
   featured: boolean;
   highlights?: string[];
   metrics?: { label: string; value: string }[];
